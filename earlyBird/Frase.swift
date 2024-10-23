@@ -6,3 +6,8 @@
 //
 
 import Foundation
+
+struct Frase: Codable, Identifiable {
+    let id: Int
+    let frase: String
+}

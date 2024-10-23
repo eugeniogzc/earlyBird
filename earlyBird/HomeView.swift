@@ -50,10 +50,7 @@ struct HomeView: View {
                     .padding(.top)
                 
                 // Frase motivacional
-                Text("“Your mind is a garden. Your thoughts are the seeds. You can grow flowers or you can grow weeds.”")
-                    .font(.body)
-                    .foregroundColor(.gray)
-                    .padding(.vertical)
+                FraseView()
                 
                 // Segmented Control (Body, Mind, Spirit)
                 HStack {
