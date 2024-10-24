@@ -61,9 +61,7 @@ struct HomeView: View {
             .padding()
             CustomModalView(modalOffset: $modalOffset, isModalVisible: $isModalVisible)
                 .animation(.spring(), value: modalOffset)  // Use animation with value
-        }
-        .navigationTitle("Home") // Asegúrate de establecer el título de la vista Home
-        
+        }        
     }
 }
 
