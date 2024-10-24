@@ -9,19 +9,24 @@ import SwiftUI
 
 struct HomeView: View {
     var userName: String // Parámetro que recibe el nombre del usuario
-
+    @State private var progress = 0.7
+    
+    @State private var modalOffset: CGFloat = UIScreen.main.bounds.height * 0.7  // Initial modal position (minimized)
+    
+    @State private var isModalVisible: Bool = true  // Track if modal is visible
+    
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading) {
+        ZStack {
+            RoundedRectangle(cornerRadius: 25)
+                .fill(Color(red: 0.27, green: 0.70, blue: 0.92)) // Converted hex #46B3EA to RGB
+                .edgesIgnoringSafeArea(.all)
+            VStack() {
                 HStack {
-                    // Menú hamburguesa
-                    Button(action: {
-                        // Acción para el menú
-                    }) {
-                        Image(systemName: "line.horizontal.3")
-                            .font(.title)
-                            .foregroundColor(.black)
-                    }
+                    Text("Hello,\n\(userName)")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .padding(.top)
+                        .foregroundColor(Color.white)
                     Spacer()
                     
                     // Icono de notificación
@@ -31,8 +36,8 @@ struct HomeView: View {
                         ZStack {
                             Image(systemName: "bell")
                                 .font(.title)
-                                .foregroundColor(.black)
-                                
+                                .foregroundColor(.white)
+                            
                             // Puntos de notificación
                             Circle()
                                 .fill(Color.red)
@@ -42,62 +47,36 @@ struct HomeView: View {
                     }
                 }
                 .padding()
+                .padding(.top)
                 
                 // Texto de saludo con el nombre del usuario
-                Text("Hello,\n\(userName)")
-                    .font(.largeTitle)
-                    .fontWeight(.bold)
-                    .padding(.top)
+                
                 
                 // Frase motivacional
                 FraseView()
+                    .foregroundColor(.white)
                 
+                CustomProgressBar(progress: $progress)
+                                .padding()
+                Slider(value: $progress)
+                                .padding()
                 // Segmented Control (Body, Mind, Spirit)
-                HStack {
-                    Text("Body")
-                        .fontWeight(.bold)
-                        .foregroundColor(.teal)
-                    
-                    Text("Mind")
-                        .foregroundColor(.gray)
-                    
-                    Text("Spirit")
-                        .foregroundColor(.gray)
-                }
-                .padding(.vertical)
+                Spacer()
                 
-                // Gráfico de progreso (simulado)
-                GraphView()
-                
-                // Metas de usuario
-                VStack(alignment: .leading) {
-                    Text("My Goals")
-                        .font(.headline)
-                        .padding(.top)
-                    
-                    ProgressView("Running", value: 0.8, total: 1.0)
-                        .padding(.vertical)
-                    
-                    ProgressView("Pilates", value: 0.8, total: 1.0)
-                        .padding(.vertical)
-                    
-                    ProgressView("Yoga", value: 0.8, total: 1.0)
-                        .padding(.vertical)
-                    
-                    ProgressView("Cycling", value: 0.8, total: 1.0)
-                        .padding(.vertical)
-                }
-                .padding(.bottom, 20)
             }
             .padding()
+            CustomModalView(modalOffset: $modalOffset, isModalVisible: $isModalVisible)
+                .animation(.spring(), value: modalOffset)  // Use animation with value
         }
         .navigationTitle("Home") // Asegúrate de establecer el título de la vista Home
+        
     }
 }
 
+
 struct HomeView_Previews: PreviewProvider {
     static var previews: some View {
-        HomeView(userName: "Usuario de Prueba") // Proporciona un valor de ejemplo
+        HomeView(userName: "Usuario Prueba") // Proporciona un valor de ejemplo
     }
 }
 
