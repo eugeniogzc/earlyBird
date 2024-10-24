@@ -39,7 +39,7 @@ struct CustomModalView: View {
     @Binding var isModalVisible: Bool  // Binding to control modal visibility
     
     let minHeight: CGFloat = UIScreen.main.bounds.height * 0.7  // 40% of screen height
-    let fullHeight: CGFloat = 0  // Full screen height (0 means no offset from the top)
+    let fullHeight: CGFloat = UIScreen.main.bounds.height * 0.05  // Leave some space at the top (10%)
     
     var body: some View {
         if isModalVisible {
@@ -59,18 +59,24 @@ struct CustomModalView: View {
                         self.modalOffset = newOffset
                     }
                     .onEnded { _ in
-                        // Snap modal to minimized (40%) or full-screen (100%) position with animation
+                        // Snap modal to minimized (40%) or full-screen (near full) position with animation
                         withAnimation(.spring()) {
                             if self.modalOffset > UIScreen.main.bounds.height * 0.3 {
                                 // If dragged down beyond 30%, snap to minimized (40%)
                                 self.modalOffset = minHeight
                             } else {
-                                // Otherwise, snap to full screen (0 offset)
+                                // Otherwise, snap to near full screen (10% offset from the top)
                                 self.modalOffset = fullHeight
                             }
                         }
                     }
             )
         }
+    }
+}
+
+struct Modal_Previews: PreviewProvider {
+    static var previews: some View {
+        ModalContentView()
     }
 }

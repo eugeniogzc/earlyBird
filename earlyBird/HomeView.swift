@@ -34,15 +34,9 @@ struct HomeView: View {
                         // Acción de notificación
                     }) {
                         ZStack {
-                            Image(systemName: "bell")
-                                .font(.title)
+                            Image(systemName: "person.circle")
+                                .font(.largeTitle)
                                 .foregroundColor(.white)
-                            
-                            // Puntos de notificación
-                            Circle()
-                                .fill(Color.red)
-                                .frame(width: 10, height: 10)
-                                .offset(x: 8, y: -8)
                         }
                     }
                 }
