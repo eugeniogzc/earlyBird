@@ -6,12 +6,28 @@
 //
 
 import SwiftUI
+import UserNotifications
 
 @main
 struct earlyBirdApp: App {
+    
+    init() {
+        requestNotificationPermissions()
+    }
     var body: some Scene {
         WindowGroup {
             ContentView()
+        }
+    }
+    
+    func requestNotificationPermissions() {
+        // Solicitar permisos para notificaciones
+        UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound, .badge]) { granted, error in
+            if granted {
+                print("Permiso para notificaciones concedido")
+            } else if let error = error {
+                print("Error solicitando permiso para notificaciones: \(error)")
+            }
         }
     }
 }
