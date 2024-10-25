@@ -6,7 +6,12 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		A8662F362CCB46D90041D3CB /* GoalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8662F352CCB46D90041D3CB /* GoalModel.swift */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
+		A8662F352CCB46D90041D3CB /* GoalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalModel.swift; sourceTree = "<group>"; };
 		A999D6772CC7F9210006A995 /* earlyBird.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = earlyBird.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -32,6 +37,7 @@
 		A999D66E2CC7F9210006A995 = {
 			isa = PBXGroup;
 			children = (
+				A8662F352CCB46D90041D3CB /* GoalModel.swift */,
 				A999D6792CC7F9210006A995 /* earlyBird */,
 				A999D6782CC7F9210006A995 /* Products */,
 			);
@@ -119,6 +125,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A8662F362CCB46D90041D3CB /* GoalModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
