@@ -61,11 +61,32 @@ struct BodyView: View {
                 .padding(.top, 8)
             
             // Spirit Article Card (replacing MindsetCard)
-            BodyCard(
-                title: "Restfull Sleep",
-                subtitle: "In 10 minutes"
-            )
-            .padding(.horizontal)
+            NavigationLink(destination: BodyArticleView(
+                            title: "Restful Sleep",
+                            subtitle: "In 10 Minutes",
+                            mainHeading: "Better Sleep Habits",
+                            introduction: "Getting quality sleep is crucial for your physical and mental well-being. Here are some proven techniques to help you fall asleep faster and enjoy more restful nights:",
+                            steps: [
+                                (
+                                    title: "Create a Bedtime Routine:",
+                                    description: "Establish a consistent schedule and relaxing activities to signal to your body that it's time to wind down for sleep."
+                                ),
+                                (
+                                    title: "Optimize Your Sleep Environment:",
+                                    description: "Keep your bedroom cool, dark, and quiet. Consider using blackout curtains or white noise if needed."
+                                ),
+                                (
+                                    title: "Practice Relaxation Techniques:",
+                                    description: "Try deep breathing exercises, progressive muscle relaxation, or gentle stretching to help your body and mind prepare for rest."
+                                )
+                            ]
+                        )) {
+                            BodyCard(
+                                title: "Restful Sleep",
+                                subtitle: "In 10 minutes"
+                            )
+                            .padding(.horizontal)
+                        }
             
             Spacer()
         }
