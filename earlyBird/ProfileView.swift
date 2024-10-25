@@ -14,81 +14,80 @@ struct ProfileView: View {
     @State private var showAddGoal: Bool = false
     
     var body: some View {
-        NavigationView {
-            VStack {
+        VStack {
                 Image(systemName: "person.circle.fill")
                     .font(.system(size: 80))
                     .foregroundStyle(Color.init(red: 70/255, green: 179/255, blue: 234/255))
                 
-                Form{
-                    Section {
-                        HStack {
-                            Image(systemName: "person.crop.square")
-                                .font(.system(size: 20))
-                                .foregroundStyle(.black)
-                            Text("Name: ")
-                            Text(name)
-                            Spacer()
-                            
-                        }
-                        HStack {
-                            Image(systemName: "calendar")
-                                .font(.system(size: 20))
-                                .foregroundStyle(.black)
-                            Text("Age: ")
-                            Text(age)
-                            Spacer()
-                        }
+            Form{
+                Section {
+                    HStack {
+                        Image(systemName: "person.crop.square")
+                            .font(.system(size: 20))
+                            .foregroundStyle(.black)
+                        Text("Name: ")
+                        Text(name)
+                        Spacer()
+                        
                     }
-                    .listRowBackground(Color.init(red: 245/255, green: 245/255, blue: 245/255))
-                    .listRowSeparator(.hidden)
-                    
-                    Text("My Daily Health Goals")
-                        .font(.title3)
-                        .bold()
-                    Section {
-                        ForEach(viewModel.goals.filter { $0.healthArea == "Physical" }) { goal in
-                            ProfGoalRow(goal: goal)
-                        }
-                        .onDelete(perform: { indexSet in
-                            deleteGoal(at: indexSet, healthArea: "Physical")
-                        })
-                    } header : {
-                        Text("Physical Health")
+                    HStack {
+                        Image(systemName: "calendar")
+                            .font(.system(size: 20))
+                            .foregroundStyle(.black)
+                        Text("Age: ")
+                        Text(age)
+                        Spacer()
                     }
-                    
-                    Section {
-                        ForEach(viewModel.goals.filter { $0.healthArea == "Mental" }) { goal in
-                            ProfGoalRow(goal: goal)
-                        }
-                        .onDelete(perform: { indexSet in
-                            deleteGoal(at: indexSet, healthArea: "Mental")
-                        })
-                    } header : {
-                        Text("Mental Health")
-                    }
-                    
-                    Section {
-                        ForEach(viewModel.goals.filter { $0.healthArea == "Spiritual" }) { goal in
-                            ProfGoalRow(goal: goal)
-                        }
-                        .onDelete(perform: { indexSet in
-                            deleteGoal(at: indexSet, healthArea: "Spiritual")
-                        })
-                    } header : {
-                        Text("Spiritual Health")
-                    }
-    
-
                 }
-                //.scrollContentBackground(.hidden)
+                .listRowBackground(Color.init(red: 245/255, green: 245/255, blue: 245/255))
+                .listRowSeparator(.hidden)
+                
+                Text("My Daily Health Goals")
+                    .font(.title3)
+                    .bold()
+                Section {
+                    ForEach(viewModel.goals.filter { $0.healthArea == "Physical" }) { goal in
+                        ProfGoalRow(goal: goal)
+                    }
+                    .onDelete(perform: { indexSet in
+                        deleteGoal(at: indexSet, healthArea: "Physical")
+                    })
+                } header : {
+                    Text("Physical Health")
+                }
+                
+                Section {
+                    ForEach(viewModel.goals.filter { $0.healthArea == "Mental" }) { goal in
+                        ProfGoalRow(goal: goal)
+                    }
+                    .onDelete(perform: { indexSet in
+                        deleteGoal(at: indexSet, healthArea: "Mental")
+                    })
+                } header : {
+                    Text("Mental Health")
+                }
+                
+                Section {
+                    ForEach(viewModel.goals.filter { $0.healthArea == "Spiritual" }) { goal in
+                        ProfGoalRow(goal: goal)
+                    }
+                    .onDelete(perform: { indexSet in
+                        deleteGoal(at: indexSet, healthArea: "Spiritual")
+                    })
+                } header : {
+                    Text("Spiritual Health")
+                }
             }
-            .navigationBarItems(trailing: Button(action: {
-                showAddGoal = true
-            }) {
-                Text("Add goal")
-                    .foregroundColor(.blue) // Cambia el color si lo deseas
-            })
+            .toolbar {
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Button(action: {
+                        showAddGoal = true
+                    }) {
+                        Text("Add goal")
+                            .foregroundColor(.blue) // Cambia el color si lo deseas
+                    }
+                }
+            }
         }
         .sheet(isPresented: $showAddGoal) {
             AddGoalView(viewModel: viewModel)
