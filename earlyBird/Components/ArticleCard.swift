@@ -36,29 +36,35 @@ struct MindsetCard: View {
                     )
                 )
             
-            VStack(spacing: 16) {
-                // Simple icon from SF Symbols
-                Image(systemName: "leaf.fill")
+            VStack {
+                Spacer()  // Space at the top
+
+                // Centered and larger leaf icon
+                Image(systemName: "leaf")
                     .resizable()
                     .aspectRatio(contentMode: .fit)
-                    .frame(width: 80, height: 80)  // Increased size for the icon
-                    .foregroundColor(.white)
-                    .padding(.bottom, 24)
-                
-                VStack(alignment: .leading, spacing: 8) { // Left-align the text
-                    Text(title)
-                        .font(.system(size: 40, weight: .bold))  // Bigger title
-                        .foregroundColor(.white)
-                    
-                    Text(subtitle)
-                        .font(.system(size: 28, weight: .regular))  // Bigger subtitle
-                        .foregroundColor(.white.opacity(0.9))
+                    .frame(width: 120, height: 120)  // Bigger size for the icon
+                    .foregroundColor(.white.opacity(0.8))
+
+              
+
+                HStack(alignment: .bottom, spacing: 4) {  // Closer gap between title and subtitle
+                    VStack(alignment: .leading, spacing: 2) {  // Reduced spacing between text elements
+                        Text(title)
+                            .font(.system(size: 30, weight: .bold))  // Title size
+                            .foregroundColor(.white)
+                        
+                        Text(subtitle)
+                            .font(.system(size: 20, weight: .regular))  // Subtitle size
+                            .foregroundColor(.white.opacity(0.9))
+                    }
+                    Spacer()  // Pushes the text to the left
                 }
-                .padding(.horizontal, 24)  // Add horizontal padding
+                .padding([.leading, .bottom], 16)  // Add padding to the bottom and left corner
             }
         }
         .frame(maxWidth: .infinity)
-        .frame(height: 300)  // Increased card height for bigger elements
+        .frame(height: 240)  // Make the card closer to a square
     }
 }
 
