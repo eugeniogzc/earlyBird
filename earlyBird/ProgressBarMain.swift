@@ -12,29 +12,29 @@ struct CustomProgressBar: View {
     
     var body: some View {
         ZStack {
-            // Background Circle
+            // Background Circle (colored backdrop, thicker)
             Circle()
-                .stroke(lineWidth: 15)
-                .opacity(0.2)
-                .foregroundColor(Color.white)
-            
-            // Progress Bar (Counterclockwise, starting from top)
-            Circle()
-                .trim(from: 1 - CGFloat(progress), to: 1)  // Inverted to fill counterclockwise
                 .stroke(
-                    AngularGradient(gradient: Gradient(colors: [Color.white]), center: .center),
-                    style: StrokeStyle(lineWidth: 15, lineCap: .round, lineJoin: .round)
+                    Color(.white),  // Light blue background color
+                    lineWidth: 28  // Background line width (slightly thicker)
+                )
+            
+            // Progress Bar (thinner, counterclockwise starting from the top)
+            Circle()
+                .trim(from: 1 - CGFloat(progress), to: 1)  // Counterclockwise trim
+                .stroke(
+                    Color(red: 159/255, green: 234/255, blue: 231/255),  // Color #9FEAE7
+                    style: StrokeStyle(lineWidth: 20, lineCap: .round)  // Thinner line width for progress bar
                 )
                 .rotationEffect(Angle(degrees: -90))  // Start from the top (12 o'clock)
-                    
-                
+                        
             
             // Percentage Text in the center
             Text("\(Int(progress * 100))%")
                 .font(.system(size: 40, weight: .bold))
                 .foregroundColor(.white)
         }
-        .frame(width: 150, height: 150)  // Adjust as needed
+        .frame(width: 200, height: 200)  // Adjust as needed
+        .animation(.easeInOut(duration: 1), value: progress)  // Smooth transition for progress
     }
 }
-

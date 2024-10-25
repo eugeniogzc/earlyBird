@@ -83,7 +83,7 @@ struct CustomModalView: View {
     @Binding var modalOffset: CGFloat  // Binding to control modal position externally
     @Binding var isModalVisible: Bool  // Binding to control modal visibility
     
-    let minHeight: CGFloat = UIScreen.main.bounds.height * 0.7  // 40% of screen height
+    let minHeight: CGFloat = UIScreen.main.bounds.height * 0.61   // 40% of screen height
     let fullHeight: CGFloat = UIScreen.main.bounds.height * 0.05  // Leave some space at the top (10%)
     
     var body: some View {
