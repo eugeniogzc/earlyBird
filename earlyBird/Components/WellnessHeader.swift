@@ -33,27 +33,35 @@ struct WellnessHeader: View {
     @ObservedObject var sectionManager: WellnessSectionManager
     
     var body: some View {
-        HStack(spacing: 33) {
-            ForEach(WellnessSection.allCases, id: \.self) { section in
-                Text(section.rawValue)
-                    .font(.system(size: 20, weight: sectionManager.selectedSection == section ? .semibold : .regular))
-                    .foregroundColor(sectionManager.selectedSection == section ? section.color : .black)
-                    .animation(.easeInOut(duration: 0.2), value: sectionManager.selectedSection)
-                    .onTapGesture {
-                        withAnimation {
-                            // Reset progress before changing view
-                            sectionManager.isTransitioning = true
-                            sectionManager.selectedSection = section
-                            
-                            // Allow time for view transition before starting progress animation
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                                sectionManager.isTransitioning = false
+        VStack {
+            // Drag indicator with extra space above
+            RoundedRectangle(cornerRadius: 2)
+                .fill(Color.gray.opacity(0.5))
+                .frame(width: 40, height: 5)
+                .padding(.top, 16) // Increased padding for extra space
+            
+            // Section headers
+            HStack(spacing: 33) {
+                ForEach(WellnessSection.allCases, id: \.self) { section in
+                    Text(section.rawValue)
+                        .font(.system(size: 20, weight: sectionManager.selectedSection == section ? .semibold : .regular))
+                        .foregroundColor(sectionManager.selectedSection == section ? section.color : .black)
+                        .animation(.easeInOut(duration: 0.2), value: sectionManager.selectedSection)
+                        .onTapGesture {
+                            withAnimation {
+                                // Reset progress before changing view
+                                sectionManager.isTransitioning = true
+                                sectionManager.selectedSection = section
+                                
+                                // Allow time for view transition before starting progress animation
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                    sectionManager.isTransitioning = false
+                                }
                             }
                         }
-                    }
+                }
             }
+            .padding()
         }
-        .padding()
     }
 }
-
