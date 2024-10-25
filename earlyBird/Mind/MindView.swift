@@ -60,12 +60,32 @@ struct MindView: View {
                 .font(.system(size: 24, weight: .regular))
                 .padding(.top, 8)
             
-            // Mindset card
-            MindsetCard(
-                title: "How To Cultivate",
-                subtitle: "A Healthy Mindset"
-            )
-            .padding(.horizontal)
+            NavigationLink(destination: ArticleView(
+                            title: "How To Cultivate",
+                            subtitle: "A Healthy Mindset",
+                            mainHeading: "Sleep Like A Baby",
+                            introduction: "In Our Fast-Paced World, Falling Asleep Quickly And Getting Quality Rest Can Seem Challenging. However, With The Right Approach, It's Possible To Achieve Restful Sleep In As Little As 10 Minutes. Here Are A Few Techniques To Help You Relax And Drift Off More Efficiently:",
+                            steps: [
+                                (
+                                    title: "Create A Calm Environment:",
+                                    description: "Dim The Lights, Reduce Noise, And Make Sure Your Room Is At A Comfortable Temperature."
+                                ),
+                                (
+                                    title: "Practice Deep Breathing:",
+                                    description: "Focusing On Slow, Deep Breaths Can Calm Your Nervous System And Prepare Your Body For Rest."
+                                ),
+                                (
+                                    title: "Use Progressive Muscle Relaxation:",
+                                    description: "Tense And Relax Different Muscle Groups To Release Tension And Promote Physical Relaxation."
+                                )
+                            ]
+                        )) {
+                            MindsetCard(
+                                title: "How To Cultivate",
+                                subtitle: "A Healthy Mindset"
+                            )
+                            .padding(.horizontal)
+                        }
             
             Spacer()
         }

@@ -11,21 +11,22 @@ struct ModalContentView: View {
     @StateObject private var sectionManager = WellnessSectionManager()
     
     var body: some View {
-        VStack(spacing: 10) {
-            WellnessHeader(sectionManager: sectionManager)
-            
-            switch sectionManager.selectedSection {
-            case .mind:
-                MindView(sectionManager: sectionManager)
-            case .body:
-                BodyView(sectionManager: sectionManager)
-            case .spirit:
-                SpiritView(sectionManager: sectionManager)
+        NavigationView {
+            VStack(spacing: 10) {
+                WellnessHeader(sectionManager: sectionManager)
+                
+                switch sectionManager.selectedSection {
+                case .mind:
+                    MindView(sectionManager: sectionManager)
+                case .body:
+                    BodyView(sectionManager: sectionManager)
+                case .spirit:
+                    SpiritView(sectionManager: sectionManager)
+                }
             }
         }
     }
 }
-
 
 
 
