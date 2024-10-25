@@ -9,7 +9,8 @@ import SwiftUI
 
 struct ModalContentView: View {
     var body: some View {
-        MindView()
+        
+        BodyView()
     }
 }
 

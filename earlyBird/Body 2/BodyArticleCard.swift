@@ -14,7 +14,7 @@
 
 import SwiftUI
 
-struct SpiritCard: View {
+struct BodyCard: View {
     let title: String
     let subtitle: String
     let gradientStartColor: Color
@@ -77,9 +77,9 @@ struct SpiritCard: View {
 
 
 // Preview
-struct SpiritCard_Preview: PreviewProvider {
+struct BodyCard_Preview: PreviewProvider {
     static var previews: some View {
-        SpiritCard(
+        BodyCard(
             title: "Restful Sleep",
             subtitle: "In 10 Minutes"
         )
