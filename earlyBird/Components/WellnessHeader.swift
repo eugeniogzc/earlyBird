@@ -26,6 +26,7 @@ enum WellnessSection: String, CaseIterable {
 
 class WellnessSectionManager: ObservableObject {
     @Published var selectedSection: WellnessSection = .mind
+    @Published var isTransitioning: Bool = false
 }
 
 struct WellnessHeader: View {
@@ -40,7 +41,14 @@ struct WellnessHeader: View {
                     .animation(.easeInOut(duration: 0.2), value: sectionManager.selectedSection)
                     .onTapGesture {
                         withAnimation {
+                            // Reset progress before changing view
+                            sectionManager.isTransitioning = true
                             sectionManager.selectedSection = section
+                            
+                            // Allow time for view transition before starting progress animation
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
+                                sectionManager.isTransitioning = false
+                            }
                         }
                     }
             }

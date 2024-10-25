@@ -18,17 +18,19 @@ struct ModalContentView: View {
                 switch sectionManager.selectedSection {
                 case .mind:
                     MindView(sectionManager: sectionManager)
+                        .transition(.opacity)
                 case .body:
                     BodyView(sectionManager: sectionManager)
+                        .transition(.opacity)
                 case .spirit:
                     SpiritView(sectionManager: sectionManager)
+                        .transition(.opacity)
                 }
             }
+            .animation(.easeInOut(duration: 0.3), value: sectionManager.selectedSection)
         }
     }
 }
-
-
 
 
 // Custom Modal View (Handles the modal's behavior and layout)

@@ -13,6 +13,9 @@ struct CircleProgressView: View {
     let bottomText: String
     let progressColor: Color
     
+    // Add animation state
+    @State private var animatedProgress: Double = 0
+    
     init(progress: Double, centerText: String, bottomText: String, colorHex: String) {
         self.progress = progress
         self.centerText = centerText
@@ -30,7 +33,7 @@ struct CircleProgressView: View {
                     )
                 
                 Circle()
-                    .trim(from: 0, to: progress)
+                    .trim(from: 0, to: animatedProgress)
                     .stroke(
                         progressColor,
                         style: StrokeStyle(
@@ -39,21 +42,27 @@ struct CircleProgressView: View {
                         )
                     )
                     .rotationEffect(.degrees(-90))
+                    .animation(.spring(response: 0.6, dampingFraction: 0.8), value: animatedProgress)
                 
                 Text(centerText)
                     .font(.system(size: 24, weight: .regular))
             }
             .frame(width: 100, height: 100)
+            .onAppear {
+                // Animate progress when view appears
+                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                    animatedProgress = progress
+                }
+            }
             
             Spacer()
-                    .frame(height: 5)
+                .frame(height: 5)
             Text(bottomText)
                 .font(.system(size: 16, weight: .regular))
                 .foregroundColor(.black)
         }
     }
 }
-
 
 struct CircleProgressView_Previews: PreviewProvider {
     static var previews: some View {
