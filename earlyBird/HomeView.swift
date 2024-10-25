@@ -53,9 +53,9 @@ struct HomeView: View {
                         Spacer()
                         
                         VStack (alignment: .center){
-                            NavigationLink(destination: ProfileView(name: userName, age: "30", viewModel: viewModel)) {
+                            NavigationLink(destination: ProfileView(name: userName, age: "20", viewModel: viewModel)) {
                                 Image(systemName: "person.circle.fill")
-                                    .font(.system(size: 70))
+                                    .font(.system(size: 50))
                                     .foregroundColor(.white)
                             }
                         }
