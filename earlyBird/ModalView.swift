@@ -58,7 +58,7 @@ struct ModalContentView: View {
             
             // "Sharpen Your Mind" text
             Text("Sharpen Your Mind")
-                .font(.system(size: 24, weight: .medium))
+                .font(.system(size: 24, weight: .regular))
                 .padding(.top, 8)
             
             // Mindset card
