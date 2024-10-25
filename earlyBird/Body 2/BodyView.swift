@@ -22,8 +22,24 @@ struct BodyView: View {
             ], spacing: 20) {
                 // All circles now show sleep data
                 CircleProgressView(
-                    progress: 0.86, // Assuming 10.3 hours is 86% of desired sleep
-                    centerText: "10.3hr",
+                    progress: 0.40, // Assuming 10.3 hours is 86% of desired sleep
+                    centerText: "3.3hr",
+                    bottomText: "Sleep",
+                    colorHex: progressColor
+                )
+                .frame(height: 140)
+                
+                CircleProgressView(
+                    progress: 0.60,
+                    centerText: "60%",
+                    bottomText: "Activity",
+                    colorHex: progressColor
+                )
+                .frame(height: 140)
+                
+                CircleProgressView(
+                    progress: 0.96,
+                    centerText: "2.5L",
                     bottomText: "Sleep",
                     colorHex: progressColor
                 )
@@ -31,24 +47,8 @@ struct BodyView: View {
                 
                 CircleProgressView(
                     progress: 0.86,
-                    centerText: "10.3hr",
-                    bottomText: "Sleep",
-                    colorHex: progressColor
-                )
-                .frame(height: 140)
-                
-                CircleProgressView(
-                    progress: 0.86,
-                    centerText: "10.3hr",
-                    bottomText: "Sleep",
-                    colorHex: progressColor
-                )
-                .frame(height: 140)
-                
-                CircleProgressView(
-                    progress: 0.86,
-                    centerText: "10.3hr",
-                    bottomText: "Sleep",
+                    centerText: "1654",
+                    bottomText: "Cal",
                     colorHex: progressColor
                 )
                 .frame(height: 140)
