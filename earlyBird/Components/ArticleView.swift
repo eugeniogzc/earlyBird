@@ -24,13 +24,22 @@ struct ArticleView: View {
                 )
                 .ignoresSafeArea(.container, edges: .top)
                 
-                // Content section with white background
+                // Content section
                 VStack(alignment: .leading, spacing: 24) {
-                    // Heading with blue accent line
-                    HStack(spacing: 16) {
-                        Rectangle()
-                            .fill(Color.blue.opacity(0.3))
-                            .frame(width: 4, height: 24)
+                    // Heading with gradient accent line
+                    HStack(spacing: 12) {
+                        RoundedRectangle(cornerRadius: 4)
+                            .fill(
+                                LinearGradient(
+                                    gradient: Gradient(colors: [
+                                        Color(.sRGB, red: 0.584, green: 0.839, blue: 0.969, opacity: 1), // #95D6F7
+                                        Color(.sRGB, red: 0.494, green: 0.886, blue: 0.878, opacity: 1)  // #7EE2E0
+                                    ]),
+                                    startPoint: .top,
+                                    endPoint: .bottom
+                                )
+                            )
+                            .frame(width: 7, height: 45)
                         
                         Text(mainHeading)
                             .font(.system(size: 28, weight: .bold))
@@ -63,17 +72,12 @@ struct ArticleView: View {
                     }
                 }
                 .padding(24)
-                .background(Color.white)
-                .clipShape(RoundedRectangle(cornerRadius: 24))
-                .padding(.horizontal)
-                .offset(y: -24) // Overlap with the card above
             }
         }
         .background(Color(.systemBackground))
         .edgesIgnoringSafeArea(.top)
     }
 }
-
 // Update MindsetCard to be full-width at the top
 struct MindsetCardArticle: View {
     let title: String
