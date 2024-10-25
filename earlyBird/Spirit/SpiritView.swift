@@ -24,7 +24,7 @@ struct SpiritView: View {
                 // All circles now show sleep data
                 CircleProgressView(
                     progress: 1, // Assuming 10.3 hours is 86% of desired sleep
-                    centerText: "3",
+                    centerText: "3/3",
                     bottomText: "Gratitude",
                     colorHex: progressColor
                 )
@@ -47,7 +47,7 @@ struct SpiritView: View {
                 .frame(height: 140)
                 
                 CircleProgressView(
-                    progress: 0.33,
+                    progress: 0.64,
                     centerText: "10p",
                     bottomText: "Reading",
                     colorHex: progressColor
