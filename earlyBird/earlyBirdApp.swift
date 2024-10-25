@@ -16,7 +16,7 @@ struct earlyBirdApp: App {
     }
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            HomeView(userName: "Usuario")
         }
     }
     
