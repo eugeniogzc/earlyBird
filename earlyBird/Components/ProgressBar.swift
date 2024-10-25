@@ -45,6 +45,8 @@ struct CircleProgressView: View {
             }
             .frame(width: 100, height: 100)
             
+            Spacer()
+                    .frame(height: 5)
             Text(bottomText)
                 .font(.system(size: 16, weight: .regular))
                 .foregroundColor(.black)
