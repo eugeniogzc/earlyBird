@@ -23,7 +23,7 @@ struct ModalContentView: View {
                 GridItem(.flexible())
             ], spacing: 20) {
                 CircleProgressView(
-                    progress: 0.7, // Approximate from image
+                    progress: 0.56, // Approximate from image
                     centerText: "1.4hr",
                     bottomText: "Focus",
                     colorHex: progressColor
@@ -47,8 +47,8 @@ struct ModalContentView: View {
                 .frame(height: 140)
                 
                 CircleProgressView(
-                    progress: 0.3,
-                    centerText: "3.0",
+                    progress: 0.88,
+                    centerText: "8.8",
                     bottomText: "Clarity",
                     colorHex: progressColor
                 )
