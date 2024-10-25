@@ -10,7 +10,7 @@ import SwiftUI
 struct ProfileView: View {
     var name : String
     var age : String
-    @ObservedObject var viewModel: GoalsViewModel
+    @ObservedObject var viewModel: GoalViewModel
     @State private var showAddGoal: Bool = false
     
     var body: some View {
@@ -108,5 +108,5 @@ struct ProfileView: View {
 }
 
 #Preview {
-    ProfileView(name: "John Doe", age: "20", viewModel: GoalsViewModel())
+    ProfileView(name: "John Doe", age: "20", viewModel: GoalViewModel())
 }

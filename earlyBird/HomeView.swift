@@ -15,53 +15,52 @@ struct HomeView: View {
     
     @State private var isModalVisible: Bool = true  // Track if modal is visible
     
+    @StateObject var viewModel = GoalViewModel()
+    
     var body: some View {
-        ZStack {
-            RoundedRectangle(cornerRadius: 25)
-                .fill(Color(red: 0.27, green: 0.70, blue: 0.92)) // Converted hex #46B3EA to RGB
-                .edgesIgnoringSafeArea(.all)
-            VStack() {
-                HStack {
-                    Text("Hello,\n\(userName)")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
-                        .padding(.top)
-                        .foregroundColor(Color.white)
-                    Spacer()
-                    
-                    // Icono de notificación
-                    Button(action: {
-                        // Acción de notificación
-                    }) {
-                        ZStack {
+        NavigationStack {
+            ZStack {
+                RoundedRectangle(cornerRadius: 25)
+                    .fill(Color(red: 0.27, green: 0.70, blue: 0.92)) // Converted hex #46B3EA to RGB
+                    .edgesIgnoringSafeArea(.all)
+                VStack() {
+                    HStack {
+                        Text("Hello,\n\(userName)")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .padding(.top)
+                            .foregroundColor(Color.white)
+                        Spacer()
+                        
+                        NavigationLink(destination: ProfileView(name: userName, age: "30", viewModel: viewModel)) {
                             Image(systemName: "person.circle")
                                 .font(.largeTitle)
                                 .foregroundColor(.white)
                         }
                     }
+                    .padding()
+                    .padding(.top)
+                    
+                    // Texto de saludo con el nombre del usuario
+                    
+                    
+                    // Frase motivacional
+                    FraseView()
+                        .foregroundColor(.white)
+                    
+                    CustomProgressBar(progress: $progress)
+                        .padding()
+                    Slider(value: $progress)
+                        .padding()
+                    // Segmented Control (Body, Mind, Spirit)
+                    Spacer()
+                    
                 }
                 .padding()
-                .padding(.top)
-                
-                // Texto de saludo con el nombre del usuario
-                
-                
-                // Frase motivacional
-                FraseView()
-                    .foregroundColor(.white)
-                
-                CustomProgressBar(progress: $progress)
-                                .padding()
-                Slider(value: $progress)
-                                .padding()
-                // Segmented Control (Body, Mind, Spirit)
-                Spacer()
-                
+                CustomModalView(modalOffset: $modalOffset, isModalVisible: $isModalVisible)
+                    .animation(.spring(), value: modalOffset)  // Use animation with value
             }
-            .padding()
-            CustomModalView(modalOffset: $modalOffset, isModalVisible: $isModalVisible)
-                .animation(.spring(), value: modalOffset)  // Use animation with value
-        }        
+        }
     }
 }
 

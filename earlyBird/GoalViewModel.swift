@@ -8,7 +8,7 @@
 import Foundation
 import Combine
 
-class GoalsViewModel: ObservableObject {
+class GoalViewModel: ObservableObject {
     @Published var goals: [GoalModel] = GoalModel.goalsExample // Inicializa con ejemplos
     
     func addGoal(_ goal: GoalModel) {

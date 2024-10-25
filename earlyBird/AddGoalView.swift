@@ -9,7 +9,7 @@ import SwiftUI
 
 struct AddGoalView: View {
     @Environment(\.presentationMode) var presentationMode // Para cerrar la vista al agregar el objetivo
-    @ObservedObject var viewModel: GoalsViewModel
+    @ObservedObject var viewModel: GoalViewModel
 
     
     // Lista de posibles propiedades
@@ -165,5 +165,5 @@ struct AddGoalView: View {
 }
 
 #Preview {
-    AddGoalView(viewModel: GoalsViewModel())
+    AddGoalView(viewModel: GoalViewModel())
 }
