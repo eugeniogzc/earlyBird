@@ -9,14 +9,12 @@ import SwiftUI
 
 
 struct MindView: View {
-    // Constants for the progress circles
+    @ObservedObject var sectionManager: WellnessSectionManager
     private let progressColor = "#7EE2E0" // Convert hex to Color
 
     var body: some View {
         VStack(spacing: 24) {
             // Header section
-            WellnessHeader()
-                .padding(.top, 16)
             
             // Progress circles grid
             LazyVGrid(columns: [

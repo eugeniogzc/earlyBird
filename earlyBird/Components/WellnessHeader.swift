@@ -24,30 +24,28 @@ enum WellnessSection: String, CaseIterable {
     }
 }
 
+class WellnessSectionManager: ObservableObject {
+    @Published var selectedSection: WellnessSection = .mind
+}
+
 struct WellnessHeader: View {
-    @State private var selectedSection: WellnessSection = .mind
+    @ObservedObject var sectionManager: WellnessSectionManager
     
     var body: some View {
         HStack(spacing: 33) {
             ForEach(WellnessSection.allCases, id: \.self) { section in
                 Text(section.rawValue)
-                    .font(.system(size: 20, weight: selectedSection == section ? .semibold : .regular))
-                    .foregroundColor(selectedSection == section ? section.color : .black)
-                    .animation(.easeInOut(duration: 0.2), value: selectedSection)
+                    .font(.system(size: 20, weight: sectionManager.selectedSection == section ? .semibold : .regular))
+                    .foregroundColor(sectionManager.selectedSection == section ? section.color : .black)
+                    .animation(.easeInOut(duration: 0.2), value: sectionManager.selectedSection)
                     .onTapGesture {
                         withAnimation {
-                            selectedSection = section
+                            sectionManager.selectedSection = section
                         }
                     }
             }
         }
         .padding()
-    }
-}
-
-struct WellnessHeader_Previews: PreviewProvider {
-    static var previews: some View {
-        WellnessHeader()
     }
 }
 

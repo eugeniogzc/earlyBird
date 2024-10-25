@@ -8,14 +8,13 @@
 import SwiftUI
 
 struct SpiritView: View {
-    // Constants for the progress circles
+    @ObservedObject var sectionManager: WellnessSectionManager
     private let progressColor = "#F8A468" // Convert hex to Color for the orange theme
     
     var body: some View {
         VStack(spacing: 24) {
             // Header section
-            WellnessHeader()
-                .padding(.top, 16)
+        
             
             // Progress circles grid - now showing sleep metrics
             LazyVGrid(columns: [
