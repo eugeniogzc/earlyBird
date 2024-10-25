@@ -61,13 +61,32 @@ struct SpiritView: View {
                 .font(.system(size: 24, weight: .regular))
                 .padding(.top, 8)
             
-            // Spirit Article Card (replacing MindsetCard)
-            SpiritCard(
-                title: "Spiritual Wellness:",
-                subtitle: "A Guide"
-            )
-            .padding(.horizontal)
-            
+            NavigationLink(destination: SpiritArticleView(
+                            title: "Spiritual Wellness:",
+                            subtitle: "A Guide",
+                            mainHeading: "Inner Peace & Balance",
+                            introduction: "In our fast-paced modern world, finding spiritual balance and inner peace is essential for overall wellbeing. Here are some practical steps to help you cultivate a deeper connection with yourself and enhance your spiritual wellness:",
+                            steps: [
+                                (
+                                    title: "Practice Mindful Meditation:",
+                                    description: "Start with just 5-10 minutes of quiet reflection each day, focusing on your breath and being present in the moment."
+                                ),
+                                (
+                                    title: "Connect with Nature:",
+                                    description: "Spend time outdoors regularly, whether it's a walk in the park or simply sitting in a garden, to ground yourself and feel connected to the natural world."
+                                ),
+                                (
+                                    title: "Cultivate Gratitude:",
+                                    description: "Keep a daily gratitude journal to shift your focus towards the positive aspects of your life and develop a more appreciative mindset."
+                                )
+                            ]
+                        )) {
+                            SpiritCard(
+                                title: "Spiritual Wellness:",
+                                subtitle: "A Guide"
+                            )
+                            .padding(.horizontal)
+                        }
             Spacer()
         }
         .background(Color.white)
