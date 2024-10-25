@@ -8,29 +8,74 @@
 import SwiftUI
 
 struct ModalContentView: View {
+    // Constants for the progress circles
+    private let progressColor = "#7EE2E0" // Turquoise color from the image
+    
     var body: some View {
-        VStack {
-            Button(action: {
-                print("Hello World from the modal")  // Button inside modal
-            }) {
-                Text("Hello World")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .padding()
-                    .background(Color.blue)
-                    .cornerRadius(10)
+        VStack(spacing: 24) {
+            // Header section
+            WellnessHeader()
+                .padding(.top, 16)
+            
+            // Progress circles grid
+            LazyVGrid(columns: [
+                GridItem(.flexible()),
+                GridItem(.flexible())
+            ], spacing: 20) {
+                CircleProgressView(
+                    progress: 0.7, // Approximate from image
+                    centerText: "1.4hr",
+                    bottomText: "Focus",
+                    colorHex: progressColor
+                )
+                .frame(height: 140)
+                
+                CircleProgressView(
+                    progress: 0.25,
+                    centerText: "25%",
+                    bottomText: "Stress",
+                    colorHex: progressColor
+                )
+                .frame(height: 140)
+                
+                CircleProgressView(
+                    progress: 0.74,
+                    centerText: "7.4",
+                    bottomText: "Emotion",
+                    colorHex: progressColor
+                )
+                .frame(height: 140)
+                
+                CircleProgressView(
+                    progress: 0.3,
+                    centerText: "3.0",
+                    bottomText: "Clarity",
+                    colorHex: progressColor
+                )
+                .frame(height: 140)
             }
-
-            // Additional content for the modal can go here
-            // e.g., other buttons, images, text, etc.
-            Text("This is where you can add more content!")
-                .padding()
-                .foregroundColor(.gray)
+            .padding(.horizontal)
+            
+            // "Sharpen Your Mind" text
+            Text("Sharpen Your Mind")
+                .font(.system(size: 24, weight: .medium))
+                .padding(.top, 8)
+            
+            // Mindset card
+            MindsetCard(
+                title: "How To Cultivate",
+                subtitle: "A Healthy Mindset"
+            )
+            .padding(.horizontal)
             
             Spacer()
         }
+        .background(Color.white)
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
+
+
 
 
 // Custom Modal View (Handles the modal's behavior and layout)

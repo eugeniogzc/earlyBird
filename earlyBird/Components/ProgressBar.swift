@@ -21,37 +21,33 @@ struct CircleProgressView: View {
     }
     
     var body: some View {
-        VStack {
+        VStack(spacing: 4) {
             ZStack {
-                // Background circle
                 Circle()
                     .stroke(
                         progressColor.opacity(0.2),
-                        lineWidth: 30  // Increased from 15 to 30
+                        lineWidth: 12
                     )
                 
-                // Progress circle
                 Circle()
                     .trim(from: 0, to: progress)
                     .stroke(
                         progressColor,
                         style: StrokeStyle(
-                            lineWidth: 30,  // Increased from 15 to 30
+                            lineWidth: 12,
                             lineCap: .round
                         )
                     )
                     .rotationEffect(.degrees(-90))
                 
-                // Center text
                 Text(centerText)
-                    .font(.system(size: 34, weight: .regular))  // Increased size, changed to regular weight
+                    .font(.system(size: 24, weight: .regular))
             }
-            .frame(width: 180, height: 180)  // Slightly adjusted size to match proportions
+            .frame(width: 100, height: 100)
             
-            // Bottom text
             Text(bottomText)
-                .font(.system(size: 32, weight: .regular))  // Increased size, changed to regular weight
-                .padding(.top, 12)
+                .font(.system(size: 16, weight: .regular))
+                .foregroundColor(.black)
         }
     }
 }
@@ -79,7 +75,7 @@ struct CircleProgressView_Previews: PreviewProvider {
     static var previews: some View {
         CircleProgressView(
             progress: 0.75,
-            centerText: "10.3hr",
+            centerText: "1.4hr",
             bottomText: "Sleep",
             colorHex: "#7FDBDA"
         )
